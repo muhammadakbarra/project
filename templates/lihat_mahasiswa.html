@@ -1,0 +1,35 @@
+{% extends '/layout/main.html' %}
+{% set title ="Lihat Mahasiswa" %}
+{% set page_active ="mahasiswa" %}
+{% block _content %}
+
+<a href="/mahasiswa" class="btn btn-primary ms-5">Kembali</a>
+<h2 class="text-center">Mahasiswa</h2>
+<table class=" border m-auto">
+    <tr>
+        <td>Nama :</td>
+        <td>{{ data.nama_lengkap }}</td>
+    </tr>
+    <tr>
+        <td>Nim :</td>
+        <td>{{ data.nim }}</td>
+    </tr>
+    <tr>
+        <td>Jurusan :</td>
+        <td>{{ data.jurusan }}</td>
+    </tr>
+    <tr>
+        <td>Semester :</td>
+        <td>{{ data.semester }}</td>
+    </tr>
+    <tr>
+        <td>Tanggal lahir :</td>
+        <td>{{ data.tgl_lahir}}</td>
+    </tr>
+    <tr>
+        <td>Nilai :</td>
+        <td>{{ data.nilai }}</td>
+    </tr>
+
+</table>
+{% endblock %}

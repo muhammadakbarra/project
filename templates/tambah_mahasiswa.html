@@ -1,0 +1,44 @@
+{% extends '/layout/main.html' %}
+{% block _content %}
+<div class="container">
+    <div class=" row justify-content-center">
+        <div class="col-lg-6">
+            <h4 class="text-center">Tambah Mahasiswa</h4>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="mb-3 content-center">
+                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"
+                        placeholder="Masukkan Nama Lengkap" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nim" class="form-label">Nim</label>
+                    <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukkan Nim" required>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
+                        <option selected>==Pilih Jurusan==</option>
+                        {% for j in jurusan %}
+                        <option value="{{ j.jurusan }}">{{ j.jurusan }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
+                    <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir"
+                        placeholder="Masukkan Tanggal Lahir" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label" id="foto" >foto Mahasiswa</label>
+                    <input class="form-control" type="file" id="formFile" id="foto" name="foto" >
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

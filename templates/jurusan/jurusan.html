@@ -1,0 +1,58 @@
+{% extends '/layout/main.html' %}
+{% block _content %}
+<div class="container">
+    <div class=" row justify-content-center">
+        <div class="col-lg-12">
+            <h1 class="text-center">Daftar Jurusan</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="mb-3 content-center">
+                    <label for="jurusan" class="form-label">Jurusan</label>
+                    <input type="text" class="form-control" id="jurusan" name="jurusan" placeholder="Tambahkan jurusan"
+                        required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <!-- table -->
+            </form>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Jurusan</th>
+            <th>Aksi</th>
+        </tr>
+        {% for dt in data | sort (attribute ='jurusan')%}
+        <tr>
+
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ dt.jurusan }}</td>
+
+            <td>
+                <button class="btn btn-danger" onclick="delete_jurusan('{{ dt.id }}')">Hapus</button>
+            </td>
+            <td>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock %}
+{% block _script %}
+<script>
+    function delete_jurusan(uid) {
+        var hapus = confirm('Apakah anda yakin hapus jurusan ?')
+        if (hapus) {
+            $.ajax({
+                type: "POST",
+                url: "{{ url_for('jurusanapp.delete_jurusan') }}",
+                data: {"uid": uid},
+                success : function() {
+                    location.reload()
+                    
+                }
+            })
+        }
+    }
+</script>
+{% endblock %}
